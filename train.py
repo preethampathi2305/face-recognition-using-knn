@@ -1,10 +1,10 @@
 import cv2
 import numpy as np
 cap=cv2.VideoCapture(0,cv2.CAP_DSHOW)
-face_cascade=cv2.CascadeClassifier(r"C:\Users\preet\anaconda3\pkgs\libopencv-4.5.0-py37_3\Library\etc\haarcascades\haarcascade_frontalface_default.xml")
+face_cascade=cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 face_list=[]
-dt="C:\\Users\\preet\\Desktop\\cb_ds\\knn\\face_detection\\data"
-filename=input("Enter file name:")
+dt="./data/"
+filename=input("Enter the name of the person:")
 
 while True:
     ret,frame=cap.read()
@@ -32,7 +32,7 @@ while True:
 face_list=np.asarray(face_list)
 face_list=face_list.reshape((face_list.shape[0],-1))
 print(face_list.shape)
-np.save(dt+"//"+filename+'.npy',face_list)
+np.save(dt+"/"+filename+'.npy',face_list)
 
 cap.release()
 cv2.destroyAllWindows()
